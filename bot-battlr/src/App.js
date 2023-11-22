@@ -1,9 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./Navbar";
-import BotCollectionPage from "./BotCollection";
-import YourBotArmyPage from "./YourBotArmy";
-import { bots } from "./data";
+import Navbar from "./components/Navbar";
+import {BrowserRouter as Router, Routes, Route, Navigate} from "react-router-dom";
+import BotCollection from "./components/BotCollection";
+import YourBotArmy from "./components/YourBotArmy";
+import { bots } from "./components/Data"; 
 
 function App() {
   const [yourBotArmy, setYourBotArmy] = React.useState([]);
@@ -29,11 +29,11 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<BotCollectionPage bots={bots} onClickEnlist={enlistBot} onClickRelease={releaseBot} onClickDischarge={dischargeBot} />}
+            element={<BotCollection bots={bots} onClickEnlist={enlistBot} onClickRelease={releaseBot} onClickDischarge={dischargeBot} />}
           />
           <Route
             path="/your-bot-army"
-            element={<YourBotArmyPage army={yourBotArmy} onClickRelease={releaseBot} onClickDischarge={dischargeBot} />}
+            element={<YourBotArmy army={yourBotArmy} onClickRelease={releaseBot} onClickDischarge={dischargeBot} />}
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
